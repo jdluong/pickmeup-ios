@@ -3,10 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		345DA84F24DB956000488125 /* Greeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA84E24DB956000488125 /* Greeting.swift */; };
+		345DA85224DB99A800488125 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA85124DB99A800488125 /* ApiService.swift */; };
+		345DA85524DBB70100488125 /* GreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA85424DBB70100488125 /* GreetingViewModel.swift */; };
+		345DA85924DCE63800488125 /* NoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA85824DCE63800488125 /* NoteImage.swift */; };
+		345DA85C24DCE9C000488125 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 345DA85B24DCE9C000488125 /* URLImage */; };
+		345DA85E24DCEB2700488125 /* NoteImageURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA85D24DCEB2700488125 /* NoteImageURL.swift */; };
+		345DA86224DCFEF700488125 /* NoteImageURLViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA86124DCFEF700488125 /* NoteImageURLViewModel.swift */; };
+		345DA86424DD31A600488125 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA86324DD31A600488125 /* Note.swift */; };
+		345DA86624DD33DA00488125 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DA86524DD33DA00488125 /* NoteViewModel.swift */; };
 		34933FE024D90CBE00EB05C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34933FDF24D90CBE00EB05C8 /* AppDelegate.swift */; };
 		34933FE224D90CBE00EB05C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34933FE124D90CBE00EB05C8 /* SceneDelegate.swift */; };
 		34933FE424D90CBE00EB05C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34933FE324D90CBE00EB05C8 /* ContentView.swift */; };
@@ -35,6 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		345DA84E24DB956000488125 /* Greeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Greeting.swift; sourceTree = "<group>"; };
+		345DA85124DB99A800488125 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		345DA85424DBB70100488125 /* GreetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewModel.swift; sourceTree = "<group>"; };
+		345DA85824DCE63800488125 /* NoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteImage.swift; sourceTree = "<group>"; };
+		345DA85D24DCEB2700488125 /* NoteImageURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteImageURL.swift; sourceTree = "<group>"; };
+		345DA86124DCFEF700488125 /* NoteImageURLViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteImageURLViewModel.swift; sourceTree = "<group>"; };
+		345DA86324DD31A600488125 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		345DA86524DD33DA00488125 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		34933FDC24D90CBE00EB05C8 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34933FDF24D90CBE00EB05C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34933FE124D90CBE00EB05C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				345DA85C24DCE9C000488125 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +94,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		345DA84D24DB952700488125 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				345DA84E24DB956000488125 /* Greeting.swift */,
+				345DA85D24DCEB2700488125 /* NoteImageURL.swift */,
+				345DA86324DD31A600488125 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		345DA85024DB998D00488125 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				345DA85124DB99A800488125 /* ApiService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		345DA85324DBA32700488125 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				345DA85424DBB70100488125 /* GreetingViewModel.swift */,
+				345DA86124DCFEF700488125 /* NoteImageURLViewModel.swift */,
+				345DA86524DD33DA00488125 /* NoteViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		34933FD324D90CBE00EB05C8 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +145,9 @@
 		34933FDE24D90CBE00EB05C8 /* PickMeUp */ = {
 			isa = PBXGroup;
 			children = (
+				345DA85324DBA32700488125 /* View Models */,
+				345DA85024DB998D00488125 /* Services */,
+				345DA84D24DB952700488125 /* Models */,
 				34933FDF24D90CBE00EB05C8 /* AppDelegate.swift */,
 				34933FE124D90CBE00EB05C8 /* SceneDelegate.swift */,
 				34933FE324D90CBE00EB05C8 /* ContentView.swift */,
@@ -106,6 +155,7 @@
 				34933FEA24D90CC300EB05C8 /* LaunchScreen.storyboard */,
 				34933FED24D90CC300EB05C8 /* Info.plist */,
 				34933FE724D90CC300EB05C8 /* Preview Content */,
+				345DA85824DCE63800488125 /* NoteImage.swift */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -152,6 +202,9 @@
 			dependencies = (
 			);
 			name = PickMeUp;
+			packageProductDependencies = (
+				345DA85B24DCE9C000488125 /* URLImage */,
+			);
 			productName = PickMeUp;
 			productReference = 34933FDC24D90CBE00EB05C8 /* PickMeUp.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +277,9 @@
 				Base,
 			);
 			mainGroup = 34933FD324D90CBE00EB05C8;
+			packageReferences = (
+				345DA85A24DCE9C000488125 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = 34933FDD24D90CBE00EB05C8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -268,7 +324,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				34933FE024D90CBE00EB05C8 /* AppDelegate.swift in Sources */,
+				345DA85E24DCEB2700488125 /* NoteImageURL.swift in Sources */,
+				345DA86624DD33DA00488125 /* NoteViewModel.swift in Sources */,
+				345DA85524DBB70100488125 /* GreetingViewModel.swift in Sources */,
+				345DA86224DCFEF700488125 /* NoteImageURLViewModel.swift in Sources */,
+				345DA85224DB99A800488125 /* ApiService.swift in Sources */,
+				345DA86424DD31A600488125 /* Note.swift in Sources */,
 				34933FE224D90CBE00EB05C8 /* SceneDelegate.swift in Sources */,
+				345DA84F24DB956000488125 /* Greeting.swift in Sources */,
+				345DA85924DCE63800488125 /* NoteImage.swift in Sources */,
 				34933FE424D90CBE00EB05C8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +658,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		345DA85A24DCE9C000488125 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		345DA85B24DCE9C000488125 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 345DA85A24DCE9C000488125 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34933FD424D90CBE00EB05C8 /* Project object */;
 }
