@@ -15,37 +15,42 @@ struct GreetingView: View {
     @State private var showContentView: Bool = false
     
     var body: some View {
-        VStack {
-            if showContentView {
-                ContentView()
-            }
-            else {
-                VStack {
-                    Text("hey hey hey")
-                        .font(.title)
-                    Text(self.greetingVM.text)
-                        .font(.subheadline)
-                    
-                    Divider()
-                    
-                    Button(action: {
-                        withAnimation(.spring()) {
-                            self.showContentView = true
+        ZStack {
+            BackgroundView();
+            VStack {
+                if showContentView {
+                    ContentView()
+                }
+                else {
+                    ZStack{
+                        BackgroundView();
+                        VStack {
+                            Text("hey hey hey")
+                                .font(.title)
+                                .transition(.opacity)
+                            Text(self.greetingVM.text)
+                                .font(.subheadline)
+                            
+                            Spacer()
+                                .frame(height:100)
+                            
+                            Button(action: {
+                                withAnimation(.spring()) {
+                                    self.showContentView = true
+                                }
+                            }) {
+                                Text("Go")
+                                    .fontWeight(.semibold)
+                                    .font(.title)
+                            }
+                            
                         }
-                    }) {
-                        Text("Go")
-                            .fontWeight(.semibold)
-                            .font(.title)
                     }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color("DarkGreen"), Color("LightGreen")]), startPoint: .leading, endPoint: .trailing))
-                    .cornerRadius(40)
                 }
             }
         }
     }
+    
 }
 
 struct ContentView: View {
@@ -55,56 +60,37 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.init(red: 149/255, green: 163/255, blue: 164/255)
-                .edgesIgnoringSafeArea(.vertical)
-            
+            BackgroundView();
             VStack {
-                    
+                // image
                 if (self.noteImageURLVM.photoURL != "") {
-                    URLImage(URL(string: self.noteImageURLVM.photoURL)!,
-                             processors: [Resize(size: CGSize(width: 300.0, height: 300.0), scale: UIScreen.main.scale)],
-                             content: {
-                                $0.image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    .padding(.all, 20.0)
-                                    .shadow(radius: 10.0)
-                                    .clipped()
-                                
-                    })
+                    NoteImageView(self.noteImageURLVM.photoURL)
                         .frame(width:350.0, height:350.0)
-                        .transition(AnyTransition.slide)
-                        .animation(.default)
                 }
                 
                 Divider()
                 
-                ZStack {
-                    Color.init(red: 238/255, green: 235/255, blue: 211/255)
-                    
-                    Text(self.noteVM.message)
-                    .frame(width:350.0, height:200.0)
-                    .cornerRadius(20.0)
-                    
-                }
-                .frame(width:350.0, height:200.0)
+                // note text
+                Text(self.noteVM.message)
+                .frame(width: 350.0, height: 200.0)
+                .foregroundColor(.white)
+                .background(Color.init(red: 165/255, green: 140/255, blue: 179/255))
                 .cornerRadius(20.0)
+                .padding(.all)
                 .transition(.slide)
-//                    .transition(AnyTransition.move(edge:.bottom).combined(with:
-//                        .opacity))
-//                    .animation(.default)
-                
+                .animation(.default)
                 
                 Divider()
                 
                 Button(action: {
-                    self.noteVM.getNew() { note in
-                        if (note.attachPhoto == 1) {
-                            self.noteImageURLVM.getNew(tagId: note.tagId)
-                        }
-                        else {
-                            self.noteImageURLVM.reset()
+                    withAnimation(.spring()) {
+                        self.noteVM.getNew() { note in
+                            if (note.attachPhoto == 1) {
+                                self.noteImageURLVM.getNew(tagId: note.tagId)
+                            }
+                            else {
+                                self.noteImageURLVM.reset()
+                            }
                         }
                     }
                     
@@ -113,15 +99,69 @@ struct ContentView: View {
                     .fontWeight(.semibold)
                     .font(.subheadline)
                     .padding()
-//                    .foregroundColor(.white)
-                    .foregroundColor(Color.init(red: 238/255, green: 235/255, blue: 211/255))
-                    .background(Color.init(red: 169/255, green: 135/255, blue: 67/255))
+                    .foregroundColor(.white)
+//                    .background(Color.init(red: 131/255, green: 139/255, blue: 194/255))
+                    .background(Color.init(red: 165/255, green: 140/255, blue: 179/255))
                     .cornerRadius(40)
                 }
             }
         }
     }
+    
+}
+
+struct BackgroundView: View {
+    var body: some View {
+        LinearGradient(
+            gradient: Gradient(colors: [
+//                Color.init(red: 192/255, green: 192/255, blue: 242/255),
+                Color.init(red: 234/255, green: 231/255, blue: 255/255),
+                .white
+            ]),
+            startPoint: .bottom,
+            endPoint: .top)
+            .edgesIgnoringSafeArea(.vertical)
+    }
+}
+
+struct NoteTextView: View {
+    var noteText: String;
+    
+    init(_ noteText: String) {
+        self.noteText = noteText
+    }
+    
+    var body: some View {
+        ZStack {
+            
+            Text(self.noteText)
+        }
+        .background(Color.white)
         
+    }
+}
+
+struct NoteImageView: View {
+    var imageUrl: String;
+    
+    init(_ imageUrl: String) {
+        self.imageUrl = imageUrl
+    }
+    
+    var body: some View {
+        URLImage(URL(string: self.imageUrl)!,
+        processors: [Resize(size: CGSize(width: 300.0, height: 300.0), scale: UIScreen.main.scale)],
+        content: {
+           $0.image
+               .resizable()
+               .aspectRatio(contentMode: .fit)
+               .clipShape(RoundedRectangle(cornerRadius: 5))
+               .padding(.all, 5.0)
+               .shadow(radius: 5.0)
+               .clipped()
+        
+        })
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
